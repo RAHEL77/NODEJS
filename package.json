@@ -1,9 +1,10 @@
 {
-  "name": "course",
+  "name": "httpreq",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000N\u0000o\u0000d\u0000e\u0000j\u0000s\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
+    "start": "node ./notes-app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/RAHEL77/Nodejs#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
     "validator": "^10.8.0"
   }
 }

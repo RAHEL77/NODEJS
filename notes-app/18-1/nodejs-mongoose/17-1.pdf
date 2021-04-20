@@ -1,0 +1,40 @@
+ mongoose
+Instructions
+Let’s create a mongoose product modelwith validation for
+an e-commerce site.
+The product should have the following:
+ name, a string, which is required and should be
+unique.
+ category, a string, which is required.
+ isActive, a boolean.
+ details, which is an embedded object that includes:
+• a description, a string, which is required and has to
+be at least 10 letters in length.
+• Price, a number, which is required and has to be a
+positive value,
+• discount, a number, which is not required but the
+default is 0 if not inputted.
+• array of images which must include at least two
+images
+• a phone number which is required and has to be a
+valid Israeli phone number.
+• DateAdded, which by default gives the current date
+Add at least 3 products to your database.
+
+----18-1
+Backend: MongoDB
+Node JS – create and read products
+The following exercise contains the following subjects:
+ mongoose
+ postman
+Instructions
+Create the right routes and use postman to test your work
+to do the following:
+Create
+1.Create a product
+Read
+1. Get all products
+2. Get a specific product
+3. Get products that are active
+4. Get products with a specific price range
+(example min = 50 max = 500)

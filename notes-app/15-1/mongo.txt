@@ -1,0 +1,67 @@
+1.1- Write a MongoDb query to display all the documents in the restaurant collection
+** db.getCollection('restaurantName').find({})
+​---------------------------------------------------------------------------------
+1.2- Write a MongoDb query to display all restaurants the have a specific cuisine
+** db.getCollection('restaurantName').find​({cuisine:"asian"})
+​---------------------------------------------------------------------------------
+1.3- Write a MongoDb query that displays only kosher restaurants
+** db.getCollection('restaurantName').​find({kosher:true})
+​---------------------------------------------------------------------------------
+1.4- Write a MongoDb query that displays a specific cities restaurants
+** db.getCollection('restaurantName').​find({address.city:"Tel Aviv"})
+​---------------------------------------------------------------------------------
+1.5- Write a MongoDb query to display a specific restaurants address
+** db.getCollection('restaurantName').​find({address.city:"Tel Aviv",address.street:"Balfur 15",address.coordinates[0]:"10.46574",address.coordinates[1]="30.6774"})
+​-------------------------------------------------------------------------------------------------
+​1.6- Write a MongoDb query to display a specific restaurants geoLocation
+** db.getCollection('restaurantName').find({address.coordinates[0]:"10.46574",address.coordinates[1]="30.6774"});
+​-----------------------------------------------------------------------------------------------------
+1.7- Write a MongoDb query that should be displayed by restaurant name in ascending order
+** db.getCollection('restaurantName').find​().sort({name:1})
+​------------------------------------------------------------------------------------------
+1.8- Write a MongoDb query that should display the restaurants by ascending city names
+** db.getCollection('restaurantName').find​().sort({address.city:1})
+----------------------------------------------------------------------------------------------​
+1.9- Update a specific restaurant's name
+** db.getCollection('restaurantName').updateOne({name:"bombay"})
+-----------------------------------------------------------------------------------------------​
+1.10- Update a specific restaurant by adding a new review.
+** db.getCollection('restaurantName').updateOne({$push:{reviews[0]:{date:2017-01-02 00:00:00:000Z score:9}}})
+-------------------------------------------------------------------------------------------------​
+1.11- Update all restaurants to be kosher
+** db.getCollection('restaurantName').updateMany({kosher:false},{$set:{kosher:true}})
+​--------------------------------------------------------------------------------------------------
+1.12- Delete a specific restaurant
+** db.getCollection('restaurantName').deleteOne({name:"bombay"})
+-------------------------------------------------------------------------------------------------​
+1.13- Delete all restaurants
+** db.getCollection('restaurantName').deleteMany({})
+------------------------------------------------------------------
+------------------------------------------------------------------
+2.1- Write a MongoDb query to display all restaurants names
+** db.getCollection('restaurantName').find().forEach(function(myDoc) {print(myDoc.name)})
+----------------------------------------------------------------------​
+2.2- Write a MongoDb query to print all restaurant cities
+** db.getCollection('restaurantName').find().forEach(function(myDoc) {print(myDoc.address.city)})
+​---------------------------------------------------------------------------------------
+2.3- Write a MongoDb query to print all restaurants geoLocation
+** ​db.getCollection('restaurantName').find().forEach( function(myDoc) { print( "coordinates: " + myDoc.address.coordinates ); } );
+----------------------------------------------------------------------------------------------------------
+* 3.1- Query for restaurant names that start with a specific alphabet
+** ​db.getCollection('restaurantName').find({name:/a/})
+--------------------------------------------------------------------------------------------------------
+3.2- Query how many documents you have from a specific collection
+** ​db.getCollection('restaurantName').count()
+-----------------------------------------------------------------------------------------------------​
+3.3- Write a MongoDb query to get restaurants that include reviews from a specific date
+** ​db.getCollection('restaurantName').find({reviews[1]:{date:2016-01-02 00:00:00:000Z}})
+​-----------------------------------------------------------------------------------------------------
+​4.1- Write a mongoDb query to all restaurants average score
+* not working
+** ?? ​db.getCollection('restaurantName').aggregate([
+   avg:{$avg:"$reviews.score"}}}
+])
+​
+4.2- Write a mongoDb query to display a specific restaurants average score
+
+​

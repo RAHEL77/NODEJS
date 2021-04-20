@@ -10,13 +10,20 @@ const ecommersSchema = mongoose.Schema({
     required: true,
   },
 
+  isActive: {
+    type: Boolean,
+    required: false,
+    unique: false,
+    default:true,
+  },
+
   ecommersDetails: {
     description: {
     type: String,
     required: true,
     validate(value) {
-        if( value.length > 11 ){
-            throw new Error('description  must be max 10 letter' )
+        if( value.length < 11 ){
+            throw new Error('description must be at least 10 letter' )
         }
     }
 },
@@ -26,27 +33,20 @@ const ecommersSchema = mongoose.Schema({
     required: true,
    
     validate(value) {
-        if( value > -1 ){
-            throw new Error('price  must be pozitif number' )
+        if( value < 0 ){
+            throw new Error('price must be pozitif number' )
         }
     }
 },
     dicount: {
     type: Number,
-    required: true,
-
-    validate(value) {
-        if( value ===null ){
-            throw new Error('dicount  empty ' )
-
-        }
-    },
-    default:0
-},  
-    
+    required: false,
+    default:0,
+   },  
+  
     images: {
     type: Array,
-    required: true,
+    required: false,
     validate(value) {
         if( value.length <2 ){
             throw new Error('at least 2 images ' )
@@ -56,13 +56,18 @@ const ecommersSchema = mongoose.Schema({
     },
     
     ecommersPhone: {
-    type: Number,
+    type: String,
     required: true,
-    default: 972,
+    minLength: 10,
+    maxLength: 10,
+    // default: 972,
+    // if (!Validator.isMobilePhone(value, "he-IL")){
+    //     throw new Error('Must be isreli phone')
+    // }
+
     validate(value) {
         if( value !=972 ){
             throw new Error('has to be 972 ' )
-
         }
     },
     },
@@ -73,16 +78,9 @@ const ecommersSchema = mongoose.Schema({
     },
   },
    
-  isActive: {
-    type: Boolean,
-    required: false,
-    unique: false,
-    default: true,
-  },
-
-};
+});
 
 
-const ecommersmodel = mongoose.model("ecommers", ecommerSchema);
+const ecommersmodel = mongoose.model("ecommers", ecommersSchema);
 module.exports = ecommersmodel;
 // module.exports = mongoose.model('ecommers',ecommersSchema);

@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use('/api/ecommers', ecommersRouter)
 
 //connect to db with mongoose
-mongoose.connect('mongodb://localhost/somecollection', {
+mongoose.connect('mongodb://localhost/ecommerce', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
